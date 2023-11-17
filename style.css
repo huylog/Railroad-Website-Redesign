@@ -7,7 +7,7 @@
 :root {
     /*declairing color/font variables*/
     --main-bg-color: #cccc99;
-    --secondary-bg-color: rgb(163, 163, 82);
+    --secondary-bg-color: #a3a352;
     --norm-text-color: #2B303A;
     --contrast-color: #1B1B0E;
     --link-color: #414105;
@@ -23,7 +23,6 @@
     transition: font-size 0.5s ease-in;
     right: 40px;
     top: 10px;
-
 }
 
 .headerfbicon:hover {
@@ -73,13 +72,22 @@ a:hover::before {
     position: relative;
     height: 400px;
     overflow: hidden;
-    background-image: repeating-linear-gradient(45deg, #1B1B0E 25%, transparent 25%, transparent 75%, var(--main-bg-color) 75%, var(--main-bg-color)), repeating-linear-gradient(45deg, var(--main-bg-color) 25%, var(--secondary-bg-color) 25%, var(--contrast-color) 75%, var(--secondary-bg-color) 75%, var(--secondary-bg-color));
+    background-image: repeating-linear-gradient(45deg, #1B1B0E 25%, transparent 25%, transparent 75%, var(--secondary-bg-color) 75%, var(--secondary-bg-color)), repeating-linear-gradient(45deg, var(--secondary-bg-color) 25%, var(--secondary-bg-color) 25%, var(--contrast-color) 75%, var(--secondary-bg-color) 75%, var(--secondary-bg-color));
     background-position: 0 0, 10px 10px;
     background-size: 20px 20px;
     border-bottom: 15px solid var(--contrast-color);
 }
-
-.bgtitle .title {
+.bgtitle-sm {
+    /* smaller cover photo and title for all other pages */
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+    background-image: repeating-linear-gradient(45deg, #1B1B0E 25%, transparent 25%, transparent 75%, var(--secondary-bg-color) 75%, var(--secondary-bg-color)), repeating-linear-gradient(45deg, var(--secondary-bg-color) 25%, var(--secondary-bg-color) 25%, var(--contrast-color) 75%, var(--secondary-bg-color) 75%, var(--secondary-bg-color));
+    background-position: 0 0, 10px 10px;
+    background-size: 5px 5px;
+    border-bottom: 15px solid var(--contrast-color);
+}
+.bgtitle .title { /*title for index "Welcome to Springfield's Railroad Historical Museum!"*/
     position: absolute;
     top: 0;
     background: #a3a35283;
@@ -87,7 +95,14 @@ a:hover::before {
     width: 100%;
     padding: 20px;
 }
-
+.bgtitle-sm .title { /*title for all other pages*/
+    position: absolute;
+    top: 0;
+    background: #a3a35283;
+    color: var(--contrast-color);
+    width: 100%;
+    padding: 20px;
+}
 /*  <--header-->  */
 header {
     background-color: var(--contrast-color);
@@ -100,7 +115,8 @@ header>h1 {
 
 /*  <--body-->  */
 body {
-    background-color: var(--main-bg-color);
+    background-image: url("imgs/0railroadbg.jpg");
+    background-repeat: repeat;
     text-align: center;
     color: var(--norm-text-color);
     font-family: var(--body-font)
@@ -173,18 +189,39 @@ body {
     margin-top: 25px;
 }
 
-.fittingimg {
-    /*a class to fit imgs specfically for the scroll container*/
+.fittingimg {  /*a class to fit imgs specfically for the scroll container*/
     height: 500px;
     width: inherit;
     padding: 15px;
+}
+
+.button-container {  /*button cage*/
+    text-align: center;
+    margin: 20px;
+}
+
+.registration-button {  /*button for button things*/
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    background-color: var(--link-color);
+    color: var(--contrast-color);
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.registration-button:hover {
+    background-color: #CCCC99;
 }
 
 /*  <--footer-->  */
 footer {
     border-top: var(--main-bg-color) dashed 5px;
     background-color: var(--contrast-color);
-    color: #A3A352;
+    color: var(--secondary-bg-color);
     text-align: center;
     padding: 10px 0;
     position: relative;
@@ -194,16 +231,7 @@ footer {
     line-height: 20px;
 }
 
-
-
-
-
-
-
-
-
-
-/*  <--media query stuffs-->  */
+/*  <--media query stuffs (grossly easy this time?)-->  */
 @media (max-width: 1024px) {
     .cards {
         display: inline-block;
